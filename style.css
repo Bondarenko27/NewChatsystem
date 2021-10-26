@@ -31,8 +31,11 @@ a{
     margin: auto;
     background-color: rgb(182, 176, 176);
     text-align: center;
-    padding-bottom: 5px;
-    
+    padding: 10px; 
+    left      : 50%;
+    top       : 50%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
 }
 
 .login{
