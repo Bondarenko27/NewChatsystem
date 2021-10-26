@@ -7,19 +7,19 @@ if(isset($_POST["submit"])){
    require_once'connectDB.php';
    require_once'functions.php';
    if (emptyInputSingup($uname,$user_pwd, $pwd_repeat)!== false) {
-       header ("location:/Login_chat/signup_page.php?error=empty_input");
+       header ("location:/NewChat/signupPage.php?error=empty_input");
        exit();
     };
     if (invalidUname($uname)!== false) {
-        header ("location:/Login_chat/signup_page.php?error=invalidUname");
+        header ("location:/NewChat/signupPage.php?error=invalidUname");
         exit();
      };
      if (invalidPassword($user_pwd,$pwd_repeat)!== false) {
-        header ("location:/Login_chat/signup_page.php?error=Passwordsdontmatch");
+        header ("location:/NewChat/signupPage.php?error=Passwordsdontmatch");
         exit();
      };
      if (existingUser($conn,$uname)!== false) {
-        header ("location:/Login_chat/signup_page.php?error=unameTaken");
+        header ("location:/NewChat/signupPage.php?error=unameTaken");
         exit();
      };
      createUser($conn,$uname,$user_pwd,);
@@ -27,7 +27,7 @@ if(isset($_POST["submit"])){
      
 }
 else {
-    header("location:/Login_chat/signup_page.php");
+    header("location:/NewChat/loginPage.php");
     exit();
 };
 

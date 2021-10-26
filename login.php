@@ -6,17 +6,17 @@ if(isset($_POST["submit"])){
    require_once'connectDB.php';
    require_once'functions.php';
    if (emptyInputlogin($uname,$user_pwd)!== false) {
-       header ("location:/Login_chat/index.php?error=empty_input");
+       header ("location:/NewChat/login.php?error=empty_input");
        exit();
     };
     if(loginUser($conn,$uname,$user_pwd)!==false){
-        header ("location:/Login_chat/index.php?error=empty_input");
+        header ("location:/NewChat/login.php?error=doesnt exist");
        exit();
     };
 }
    
 else {
-    header("location:/Login_chat/chatPage.php");
+    header("location:/NewChat/chatPage.php");
     exit();
 };
 

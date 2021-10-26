@@ -36,7 +36,7 @@ function existingUser($conn,$uname){
     $sql="SELECT * FROM users WHERE usersName = ?;";
     $statement= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($statement, $sql)) {
-        header ("location:/Login_chat/signup_page.php?error=existingUser");
+        header ("location:/NewChat/signupPage.php?error=existingUser");
         exit();
     }
     mysqli_stmt_bind_param($statement,"s",$uname);
@@ -55,14 +55,14 @@ function createUser($conn,$uname,$user_pwd){
     $sql="INSERT INTO users(usersName,usersPwd) VALUES (?,?)";
     $statement= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($statement, $sql)) {
-        header ("location:/Login_chat/signup_page.php?error=statementfailed");
+        header ("location:/NewChat/signupPage.php?error=statementfailed");
         exit();
     }
     $hashedPwd= password_hash($user_pwd,PASSWORD_DEFAULT);
     mysqli_stmt_bind_param($statement,"ss",$uname,$hashedPwd);
     mysqli_stmt_execute($statement);
     mysqli_stmt_close($statement);
-    header ("location:/Login_chat/index.php?error=none");
+    header ("location:/NewChat/login.php?error=none");
     exit();
 };
 
@@ -78,21 +78,15 @@ function emptyInputlogin($uname,$user_pwd){
     return $result;
  
 };
-function invalidLoginName($conn,$uname){
-    $sql="SELECT * FROM users WHERE usersName = ?;";
+function loginUser($conn,$uname,$user_pwd){
+    $sql="SELECT * FROM users WHERE usersName = ? AND usersPwd=?;";
     $statement= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($statement, $sql)) {
-        invalidLoginPWD($conn,$user_pwd);
+        header ("location:/NewChat/login.php?error= doesnt exist");
+        exit(); 
     };
 };
-function invalidLoginPWD($conn,$user_pwd){
-    $sql="SELECT * FROM users WHERE usersPwd = ?;";
-    $statement= mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($statement, $sql)) {
-        header ("location:/Login_chat/chatPage.php?");
-        exit();
-    };
-};
+
 
 
 
