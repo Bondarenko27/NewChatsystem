@@ -106,3 +106,13 @@ p{
     color: rgb(247, 112, 2);
     font-weight: 300;
 }
+.receivedMsg{
+    display: flexbox;
+    width: 70%;
+    height:fit-content;
+    margin: auto;
+    background-color: rgb(219, 234, 241);
+    text-align: center;
+    padding-top: 15px; 
+     
+}
