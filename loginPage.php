@@ -16,7 +16,7 @@
             <input type="text"name="user"placeholder="Username"><br> </br>
             <input type="password" name="pwd"placeholder="Password"><br> </br>
             <button type="submit" name="submit">LOGIN</button>
-            </form>
+            </form></br>
             <a href="signup_page.php">Not register yet?Sign Up here!</a>
         </div>
     </div>
