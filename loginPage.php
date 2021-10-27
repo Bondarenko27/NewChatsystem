@@ -24,11 +24,13 @@ session_start();
             <a href="signupPage.php">Not register yet?Sign Up here!</a>
         </div>
         <?php
+    
         if (isset($_GET["error"])) {
-            if ($_GET["error"]== "empty_input") {
+
+            if ($_GET["error"]=="empty_input") {
                 echo"<p> Fill in all fields please!</p>";
             }
-            elseif ($_GET["error"]== "doesnt_exist") {
+            elseif ($_GET["error"]=="doesnt_exist") {
                 echo"<p> User doesn't exist!</p>";
             }
             elseif ($_GET["error"]== "no_match") {
