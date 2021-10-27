@@ -92,8 +92,8 @@ function loginUser($conn,$uname,$user_pwd){
     }
     elseif ($checkPwd===true) {
         session_start();
-        $_SESSION["user"]=$existingUser["uname"];
-        header ("location:/NewChat/chatPage.php?error= no_error");
+        $_SESSION["user"]=$existingUser["usersName"];
+        header ("location:/NewChat/chatPage.php");
         exit();
     }
    
