@@ -28,10 +28,13 @@ session_start();
             if ($_GET["error"]== "empty_input") {
                 echo"<p> Fill in all fields please!</p>";
             }
-            elseif ($_GET["error"]== "invalidUname") {
-                echo"<p> User name is invalid!</p>";
+            elseif ($_GET["error"]== "doesnt_exist") {
+                echo"<p> User doesn't exist!</p>";
             }
-        
+            elseif ($_GET["error"]== "no_match") {
+                echo"<p> Password is invalid!</p>";
+            }
+            
         }
         ?>
     </div>
