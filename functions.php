@@ -62,7 +62,7 @@ function createUser($conn,$uname,$user_pwd){
     mysqli_stmt_bind_param($statement,"ss",$uname,$hashedPwd);
     mysqli_stmt_execute($statement);
     mysqli_stmt_close($statement);
-    header ("location:/NewChat/login.php?error=none");
+    header ("location:/NewChat/loginPage.php?error=none");
     exit();
 };
 
@@ -79,12 +79,24 @@ function emptyInputlogin($uname,$user_pwd){
  
 };
 function loginUser($conn,$uname,$user_pwd){
-    $sql="SELECT * FROM users WHERE usersName = ? AND usersPwd=?;";
-    $statement= mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($statement, $sql)) {
-        header ("location:/NewChat/login.php?error= doesnt exist");
+    $existingUser=existingUser($conn,$uname);
+    if ($existingUser===false) {
+        header ("location:/NewChat/loginPage.php?error= doesnt_exist");
         exit(); 
-    };
+    }
+    $PwdHashed=$existingUser["usersPwd"];
+    $checkPwd=password_verify($user_pwd,$PwdHashed);
+    if ($checkPwd===false) {
+        header ("location:/NewChat/loginPage.php?error= no_match");
+        exit(); 
+    }
+    elseif ($checkPwd===true) {
+        session_start();
+        $_SESSION["user"]=$existingUser["uname"];
+        header ("location:/NewChat/chatPage.php?error= no_error");
+        exit();
+    }
+   
 };
 
 
