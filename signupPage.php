@@ -18,10 +18,26 @@
             <button type="submit" name="submit">Sign Up</button>
             </form>
         </div>
-        
+        <?php
+        if (isset($_GET["error"])) {
+            if ($_GET["error"]== "empty_input") {
+                echo"<p> Fill in all fields please!</p>";
+            }
+            elseif ($_GET["error"]== "invalidUname") {
+                echo"<p> User name is invalid!</p>";
+            }
+            elseif ($_GET["error"]== "Passwordsdontmatch") {
+                echo"<p> Passwords don't match!</p>";
+            }
+            elseif ($_GET["error"]== "unameTaken") {
+                echo"<p> User name already exists!</p>";
+            }
+        }
+        ?>
 
     </div>
-   
+    
+        
 </section>
 
 
