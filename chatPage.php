@@ -1,5 +1,7 @@
  <?php
  session_start();
+ 
+
  ?>
  <!DOCTYPE html>
 <html lang= "en">
@@ -15,8 +17,13 @@
             <div>
                 <h3> Menu</h3>
                 <ul class="menu-member">
-                    <li>Options</li>
-                    <li>Hello User</li>
+                    <?php
+                    if (isset($_SESSION["user"])) {
+                    echo "<li>Hello ".$_SESSION["user"]."</li>";
+                    echo"<li><a href='logout.php'>Log out</a></li>";
+                    }
+                  ?>
+                   
                 </ul>
             </div>
         </nav>
