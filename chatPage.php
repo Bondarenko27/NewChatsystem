@@ -1,6 +1,5 @@
  <?php
  session_start();
- 
 
  ?>
  <!DOCTYPE html>
@@ -34,16 +33,36 @@
             <form action='chat.php' method="post">
             <div class="receivedMsg">
             <label for="comments"> Your last messages</label>
-            <textarea id="msg" required class="msg"></textarea>
+            <textarea id="chat" class="msgB"></textarea>
             </div>   <br>
             <div class="msgArea">
                 <label for="comments">Write your message here:</label>
-                <textarea id="msg" required class="msg"></textarea>
+               <!-- <input type="hidden" name="date" value="date('Y-M-d H:i:s')">-->
+                <textarea id="msg" name="msg" required class="msgA"></textarea>
             </div> <br>
-            <button type="submit" name="submit"class="chatBtn">Send</button>
+            <button type="submit" id="send"name="Sendsubmit"class="chatBtn">Send</button>
             </form>
         </div>
     </div>
 </section>
 </body>
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var msg=document.getElementbyId("msg");
+        document.getElementbyId("send").addEventListener("click",SendMsg());
+       document.getElementById("chat").innerHTML = xhttp.responseText;
+    }
+};
+xhttp.open("POST","chat.php",true);
+xhttp.send();
+
+ 
+function SendMsg((params) {
+    
+}
+
+ </script>
+
 </html>
