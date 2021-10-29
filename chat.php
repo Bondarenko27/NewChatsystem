@@ -23,12 +23,7 @@ if(isset($_SESSION["user"])&&($_POST["Sendsubmit"]) ){
    
 } 
 
-else {
-   
-    header ("location:/NewChat/chatPage.php?error=no luck");
-    exit();
-   
-}
+
 
 
 
