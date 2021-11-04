@@ -20,6 +20,7 @@
                     if (isset($_SESSION["user"])) {
                     echo "<li>Hello ".$_SESSION["user"]."</li>";
                     echo"<li><a href='logout.php'>Log out</a></li>";
+
                     }
                   ?>
                    
@@ -28,41 +29,43 @@
         </nav>
     <header>
 <section class="forms">
-    <div class="wrapper">
-        <div class="chat">
-            <form action='chat.php' method="post">
-            <div class="receivedMsg">
-            <label for="comments"> Your last messages</label>
-            <textarea id="chat" class="msgB"></textarea>
-            </div>   <br>
-            <div class="msgArea">
-                <label for="comments">Write your message here:</label>
-               <!-- <input type="hidden" name="date" value="date('Y-M-d H:i:s')">-->
-                <textarea id="msg" name="msg" required class="msgA"></textarea>
-            </div> <br>
-            <button type="submit" id="send"name="Sendsubmit"class="chatBtn">Send</button>
-            </form>
+    <div class="wrapper" id="wrapper">
+        <div class="chat" id="chat">
+        <button id="fetch"> last messages
         </div>
+        <div class="msgArea">
+        <label for="comments">Write your message here:</label>
+        <textarea id="msg" name="msg" required class="msgA"></textarea>
+        </div> <br>
+        <button type="submit" id="send"name="Sendsubmit"class="chatBtn">Send</button>
+        </div>   <br>
     </div>
 </section>
 </body>
 <script>
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var msg=document.getElementbyId("msg");
-        document.getElementbyId("send").addEventListener("click",SendMsg());
-       document.getElementById("chat").innerHTML = xhttp.responseText;
-    }
-};
-xhttp.open("POST","chat.php",true);
-xhttp.send();
-
- 
-function SendMsg((params) {
+    document.getElementById("fetch").addEventListener("click",function() {
+        const divmain = document.getElementById("chat");
+        const xml = new XMLHttpRequest();
+        xml.open("GET","fetchMsg.php");
+        xml.send();
+        xml.onload = function() {
+            if(xml.status==200){
+              var data = JSON.parse(xml.response);
+                for (var i = 0; i < data.length; i++) {
+                    var div = document.createElement("div");
+                    div.innerHTML = 'Name: ' + data[i].uname + ' ' + '<br>'+ 'Message: ' + data[i].message;
+                     divmain.appendChild(div);
+                  
+                }
+            
+            }
+        }
+    });
     
-}
+    
 
+
+   
  </script>
 
 </html>
