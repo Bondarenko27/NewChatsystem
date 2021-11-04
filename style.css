@@ -55,7 +55,7 @@ a{
 .chat{
     display: flexbox;
     width: 70%;
-    height: 600px;
+    height: fit-content;
     margin: auto;
     background-color: rgb(219, 234, 241);
     text-align: center;
@@ -63,7 +63,7 @@ a{
     
 }
 .msg{
-    width: 80%;
+    width: 60%;
     height: 50%;
     margin: auto;
     padding-top: 20px;
@@ -119,4 +119,22 @@ p{
 .chatBtn{
     color: rgb(12, 2, 59);
     font-size: 20px;
+}
+label{
+    font-size: 20px;
+}
+.msgB{
+    width: 50%;
+    height: 30%;
+    left      : 50%;
+    top       : 50%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
+
+}
+.wrapper{
+    height: fit-content;
+    margin: auto;
+    background-color: rgb(245, 243, 243);
+    text-align: center;
 }
